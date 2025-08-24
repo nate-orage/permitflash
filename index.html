@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PermitFlash — Be first to the job site.</title>
+  <meta name="description" content="PermitFlash delivers daily Bay Area construction permit alerts for trades like HVAC, Solar, Electrical, and Remodeling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    html { scroll-behavior: smooth; }
+    .brand-gradient { background: radial-gradient(80% 80% at 20% 0%, #0b1220 0%, #0f172a 45%, #0b1220 100%); }
+    .card { box-shadow: 0 8px 24px rgba(2, 6, 23, .16); }
+    .lift:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+  <!-- Header -->
+  <header class="brand-gradient text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#fbbf24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        <span class="text-xl font-extrabold tracking-tight">Permit<span class="text-amber-400">Flash</span>.com</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#how" class="hover:text-amber-300 transition">How it works</a>
+        <a href="#sample" class="hover:text-amber-300 transition">Sample</a>
+        <a href="#signup" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 transition">Join free</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="brand-gradient text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Be first to the job site.</h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-200">
+          Daily permit alerts for Bay Area contractors. Get fresh <b>HVAC</b>, <b>Solar</b>, <b>Electrical</b>, and <b>Remodeling</b> permits
+          delivered each morning, Monday–Friday — before your competitors know they exist.
+        </p>
+
+        <!-- Buttondown embed (your live signup form) -->
+        <div id="signup" class="mt-8">
+          <form
+            action="https://buttondown.com/api/emails/embed-subscribe/nate54o"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.com/nate54o', 'popupwindow')"
+            class="embeddable-buttondown-form flex flex-col sm:flex-row gap-3 bg-white/5 border border-white/10 rounded-xl p-3 sm:p-2"
+          >
+            <label for="bd-email" class="sr-only">Enter your email</label>
+            <input
+              id="bd-email"
+              type="email"
+              name="email"
+              required
+              placeholder="you@company.com"
+              class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 placeholder-slate-500 outline-none"
+            />
+            <input
+              type="submit"
+              value="⚡ Join Free During Beta"
+              class="cursor-pointer px-5 py-3 rounded-lg bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 transition lift"
+            />
+          </form>
+          <p class="mt-2 text-xs text-slate-300">No lead brokers. No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 card">
+        <p class="text-sm uppercase tracking-wider text-slate-300">What you get</p>
+        <h3 class="mt-1 text-2xl font-bold">PermitFlash Bulletin</h3>
+        <ul class="mt-4 space-y-3 text-slate-200">
+          <li class="flex gap-3"><span class="text-amber-400">•</span> Fresh permits</li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span> Address & contractor (when published)</li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span> Clean, one-minute read every morning</li>
+          <!-- <li class="flex gap-3"><span class="text-amber-400">•</span> Optional CSV export for CRMs</li> -->
+        </ul>
+        <div class="mt-6 text-xs text-slate-400">San Francisco (more coming)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">How it works</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card lift">
+          <div class="text-2xl">📡</div>
+          <h3 class="mt-3 font-bold">We monitor city feeds</h3>
+          <p class="mt-2 text-slate-600">We track official permit sources and pull new records as they’re posted.</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card lift">
+          <div class="text-2xl">🧰</div>
+          <h3 class="mt-3 font-bold">The trades you're looking for</h3>
+          <p class="mt-2 text-slate-600">We’re starting with the trades that matter most — HVAC, Solar, Electrical, Remodeling. More filters coming soon.</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 card lift">
+          <div class="text-2xl">⚡</div>
+          <h3 class="mt-3 font-bold">You get it first</h3>
+          <p class="mt-2 text-slate-600">A clean daily bulletin so you can call leads before competitors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample -->
+  <section id="sample" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Sample issue</h2>
+      <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <p class="text-sm text-slate-600">Here’s what a typical morning email looks like:</p>
+        <ul class="mt-4 space-y-4 text-slate-800">
+          <li>
+            <div class="font-semibold">1048 Broadway, Oakland — HVAC Replacement</div>
+            <div class="text-sm text-slate-600">Issued Aug 22 • Contractor: Smith &amp; Sons Mechanical • Permit #MECH-23451</div>
+          </li>
+          <li>
+            <div class="font-semibold">512 37th St, Oakland — Rooftop Solar Installation</div>
+            <div class="text-sm text-slate-600">Issued Aug 22 • Contractor: SunPeak Solar • Permit #SOL-88210</div>
+          </li>
+          <li>
+            <div class="font-semibold">1400 Mission St, San Francisco — Kitchen Remodel</div>
+            <div class="text-sm text-slate-600">Issued Aug 22 • Contractor: Mission Build Co • Permit #BLD-77104</div>
+          </li>
+        </ul>
+        <p class="mt-4 text-xs text-slate-500">Real data varies by city. Contractor fields shown when available.</p>
+      </div>
+      <div class="mt-10">
+        <a href="#signup" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 transition lift">Sign up free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 brand-gradient text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="#fbbf24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        <span class="font-semibold">Permit<span class="text-amber-400">Flash</span>.com</span>
+      </div>
+      <div class="text-sm text-slate-300">© <span id="year"></span> PermitFlash. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
