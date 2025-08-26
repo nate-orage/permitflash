@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Sitemap: https://permitflash.com/sitemap.xml
