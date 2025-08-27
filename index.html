@@ -69,16 +69,19 @@
 
   <!-- Hero -->
   <section class="brand-gradient text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-      <div class="max-w-3xl w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-stretch">
+      <!-- Headline row spans both columns -->
+      <div class="max-w-3xl w-full md:col-span-2">
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Be first to the job site.</h1>
         <p class="mt-4 text-lg md:text-xl text-slate-200">
           Daily permit alerts for Bay Area contractors. Get fresh <b>HVAC</b>, <b>Solar</b>, <b>Electrical</b>, and <b>Remodeling</b> permits
           delivered each morning, Monday–Friday — before your competitors know they exist.
         </p>
+      </div>
 
-        <!-- Buttondown embed (your live signup form) -->
-        <div id="signup" class="mt-8">
+      <!-- Left signup card (its own grid item) -->
+      <div class="max-w-3xl w-full">
+        <div id="signup" class="">
           <form
             action="https://buttondown.com/api/emails/embed-subscribe/permitflash"
             method="post"
@@ -117,26 +120,10 @@
                 var form = document.currentScript.closest('form');
                 form.addEventListener('submit', function (e) {
                   var picks = Array.from(form.querySelectorAll('input[name="bd-trade"]:checked')).map(function(i){return i.value});
-                  // add a city tag for now (helps later segmentation)
                   var city = document.createElement('input');
-                  city.type = 'hidden';
-                  city.name = 'tags';
-                  city.value = 'city:SF';
-                  form.appendChild(city);
-                  // add pref:* tags for each selected trade
-                  picks.forEach(function(tag){
-                    var hidden = document.createElement('input');
-                    hidden.type = 'hidden';
-                    hidden.name = 'tags';
-                    hidden.value = 'pref:' + tag;
-                    form.appendChild(hidden);
-                  });
-                  // mark they used the on-site form
-                  var src = document.createElement('input');
-                  src.type = 'hidden';
-                  src.name = 'tags';
-                  src.value = 'source:web';
-                  form.appendChild(src);
+                  city.type = 'hidden'; city.name = 'tags'; city.value = 'city:SF'; form.appendChild(city);
+                  picks.forEach(function(tag){ var hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'tags'; hidden.value = 'pref:' + tag; form.appendChild(hidden); });
+                  var src = document.createElement('input'); src.type = 'hidden'; src.name = 'tags'; src.value = 'source:web'; form.appendChild(src);
                 });
               })();
             </script>
@@ -145,14 +132,14 @@
         </div>
       </div>
 
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 card">
+      <!-- Right feature card (grid peer to left signup) -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 card flex flex-col justify-between self-stretch h-full">
         <p class="text-sm uppercase tracking-wider text-slate-300">What you get</p>
         <h3 class="mt-1 text-2xl font-bold">PermitFlash Bulletin</h3>
         <ul class="mt-4 space-y-3 text-slate-200">
           <li class="flex gap-3"><span class="text-amber-400">•</span> Fresh permits</li>
           <li class="flex gap-3"><span class="text-amber-400">•</span> Address & contractor (when published)</li>
           <li class="flex gap-3"><span class="text-amber-400">•</span> Clean, one-minute read every morning</li>
-          <!-- <li class="flex gap-3"><span class="text-amber-400">•</span> Optional CSV export for CRMs</li> -->
         </ul>
         <div class="mt-6 text-xs text-slate-400">San Francisco (more coming)</div>
       </div>
