@@ -16,6 +16,38 @@
     .brand-gradient { background: radial-gradient(80% 80% at 20% 0%, #0b1220 0%, #0f172a 45%, #0b1220 100%); }
     .card { box-shadow: 0 8px 24px rgba(2, 6, 23, .16); }
     .lift:hover { transform: translateY(-1px); }
+    /* Visual legend that sits inside the white card */
+    .pf-legend{margin:0 0 6px 0;color:#64748b;font-size:0.75rem;font-weight:600;line-height:1.15;grid-column:1/-1}
+  </style>
+  <style>
+    /* Prevent overflow/clipping in the preferences grid */
+    .embeddable-buttondown-form fieldset { box-sizing: border-box; min-width: 0; }
+    .embeddable-buttondown-form fieldset label {
+      display: flex; align-items: flex-start; gap: 8px;
+      white-space: normal; word-break: break-word; overflow-wrap: anywhere;
+      line-height: 1.25; font-size: 0.9rem;
+    }
+    .embeddable-buttondown-form fieldset legend{
+      display:block;           /* ensure it sits on its own line */
+      margin: 0 0 6px 0;       /* space below the legend */
+      padding: 0;              /* remove default UA padding */
+      line-height: 1.15;
+      color:#94a3b8;           /* slate-400-ish */
+      font-size: 0.75rem;      /* 12px */
+      font-weight: 600;
+    }
+    /* Auto-fit grid with a minimum width so long labels don’t break mid-word */
+    .pf-grid-auto {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .pf-grid-auto label { 
+      white-space: normal; 
+      word-break: normal;      /* prefer breaking at spaces */
+      overflow-wrap: break-word; /* only if needed */
+      line-height: 1.25;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -38,7 +70,7 @@
   <!-- Hero -->
   <section class="brand-gradient text-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-      <div>
+      <div class="max-w-3xl w-full">
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Be first to the job site.</h1>
         <p class="mt-4 text-lg md:text-xl text-slate-200">
           Daily permit alerts for Bay Area contractors. Get fresh <b>HVAC</b>, <b>Solar</b>, <b>Electrical</b>, and <b>Remodeling</b> permits
@@ -52,7 +84,7 @@
             method="post"
             target="popupwindow"
             onsubmit="window.open('https://buttondown.com/permitflash', 'popupwindow')"
-            class="embeddable-buttondown-form flex flex-col sm:flex-row gap-3 bg-white/5 border border-white/10 rounded-xl p-3 sm:p-2"
+            class="embeddable-buttondown-form grid gap-3 md:grid-cols-[1fr_auto] bg-white/5 border border-white/10 rounded-xl p-3 max-w-3xl w-full"
           >
             <label for="bd-email" class="sr-only">Enter your email</label>
             <input
@@ -68,6 +100,46 @@
               value="⚡ Join Free During Beta"
               class="cursor-pointer px-5 py-3 rounded-lg bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 transition lift"
             />
+            <fieldset class="col-span-full pf-grid-auto text-sm text-slate-900 bg-white rounded-lg px-3 pt-4 pb-3 w-full min-w-0">
+              <legend class="sr-only">Pick the permits you want</legend>
+              <div class="pf-legend">Pick the permits you want</div>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="HVAC"> HVAC</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="ELECTRICAL"> Electrical</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="EV_CHARGER"> EV Charger</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="SOLAR"> Solar / PV</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="PLUMBING"> Plumbing</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="ROOFING"> Roofing</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="WINDOWS"> Windows &amp; Doors</label>
+              <label class="inline-flex items-start gap-2 whitespace-normal"><input type="checkbox" name="bd-trade" value="REMODEL"> Kitchen / Bath / Remodel</label>
+            </fieldset>
+            <script>
+              (function(){
+                var form = document.currentScript.closest('form');
+                form.addEventListener('submit', function (e) {
+                  var picks = Array.from(form.querySelectorAll('input[name="bd-trade"]:checked')).map(function(i){return i.value});
+                  // add a city tag for now (helps later segmentation)
+                  var city = document.createElement('input');
+                  city.type = 'hidden';
+                  city.name = 'tags';
+                  city.value = 'city:SF';
+                  form.appendChild(city);
+                  // add pref:* tags for each selected trade
+                  picks.forEach(function(tag){
+                    var hidden = document.createElement('input');
+                    hidden.type = 'hidden';
+                    hidden.name = 'tags';
+                    hidden.value = 'pref:' + tag;
+                    form.appendChild(hidden);
+                  });
+                  // mark they used the on-site form
+                  var src = document.createElement('input');
+                  src.type = 'hidden';
+                  src.name = 'tags';
+                  src.value = 'source:web';
+                  form.appendChild(src);
+                });
+              })();
+            </script>
           </form>
           <p class="mt-2 text-xs text-slate-300">No lead brokers. No spam. Unsubscribe anytime.</p>
         </div>
